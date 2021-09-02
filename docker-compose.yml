@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  db:
+    image: 'postgres:13.3-alpine3.14'
+    container_name: db
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data/pgdate
+    environment:
+      - POSTGRES_DB=ElectronicUniversityDB
+      - POSTGRES_USER=eddytep
+      - POSTGRES_PASSWORD=123456
+      - PGDATA=/var/lib/postgresql/data/pgdate
+    ports:
+      - 5432:5432
+    restart: always
