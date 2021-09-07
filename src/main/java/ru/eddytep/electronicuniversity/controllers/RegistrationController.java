@@ -5,21 +5,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.eddytep.electronicuniversity.domain.User;
-import ru.eddytep.electronicuniversity.repository.UserRepository;
-import ru.eddytep.electronicuniversity.services.UserService;
+import ru.eddytep.electronicuniversity.domain.departament.Human;
+import ru.eddytep.electronicuniversity.repository.HumanRepository;
+import ru.eddytep.electronicuniversity.services.HumanService;
 
 @Controller
 @RequestMapping("/registration")
 public class RegistrationController {
 
-    private final UserService userService;
+    private final HumanService humanService;
 
     public RegistrationController(
-            UserRepository userRepository,
-            UserService userService
+            HumanRepository humanRepository,
+            HumanService humanService
     ) {
-        this.userService = userService;
+        this.humanService = humanService;
     }
 
     @GetMapping
@@ -29,14 +29,14 @@ public class RegistrationController {
 
     @PostMapping
     public String processRegistration(
-            User user,
+            Human human,
             Model model
     ) {
-        boolean isUserExist = userService.addUser(user);
+        boolean isUserExist = humanService.addUser(human);
         if (!isUserExist) {
             model.addAttribute(
                     "UserExistMessage",
-                    "User " + user.getUsername() + " is exist!"
+                    "Human " + human.getUsername() + " is exist!"
             );
             return "registration";
         }

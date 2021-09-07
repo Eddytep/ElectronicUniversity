@@ -1,4 +1,4 @@
-package ru.eddytep.electronicuniversity.domain;
+package ru.eddytep.electronicuniversity.domain.departament;
 
 import org.springframework.security.core.GrantedAuthority;
 
