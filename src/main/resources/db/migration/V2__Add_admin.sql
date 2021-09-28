@@ -1,6 +1,5 @@
-insert into usr (id, username, password)
-values (1, 'admin', '$2a$12$XASe2mlm28Fsr.aTmcUYUu.lmleftIp4iFfE2m6OIGksHI.yLFUmO');
+INSERT INTO human(id, human_type, username, password)
+    VALUES (nextval('hibernate_sequence'), 1,  'admin', '$2a$12$XASe2mlm28Fsr.aTmcUYUu.lmleftIp4iFfE2m6OIGksHI.yLFUmO');
 
-insert into user_role (user_id, roles)
-values (1, 'USER'),
-       (1, 'ADMIN');
+INSERT INTO human_role (human_id, roles)
+    VALUES (currval('hibernate_sequence'), 'ADMIN');

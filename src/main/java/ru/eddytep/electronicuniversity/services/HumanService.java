@@ -26,8 +26,7 @@ public class HumanService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username)
-            throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Human human = humanRepository.findByUsername(username);
         if (Objects.nonNull(human)) {
             return human;

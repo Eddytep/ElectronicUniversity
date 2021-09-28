@@ -1,0 +1,25 @@
+<div xmlns:th="http://www.thymeleaf.org"
+     th:fragment="loginAndRegistration(isLogin)"
+     class="container-lg">
+    <div class="row mx-4">
+        <div class="col col-xs-12 col-sm-8 col-md-6 col-lg-4 mc-login-border mc-login-position mc-login-card">
+            <img th:src="@{static/images/electronic_university_logo.png}" alt="electronic_university_logo.png"
+                 class="rounded mx-auto d-block">
+            <h1 class="mb-4 mc-inscription">
+                MyContacts
+            </h1>
+            <form th:method="POST" th:action="${isLogin} ? '/authenticate' : '/registration'" id="loginForm">
+                <input type="text" class="col col-xs-12 form-control border border-primary mb-3"
+                       placeholder="Имя пользователя" name="username" id="username"/>
+                <input type="text" class="col col-xs-12 form-control border border-primary mb-3"
+                       placeholder="Введите пароль" name="password" id="password"/>
+                <input type="submit" class="btn btn-primary col-12 mb-3" th:value="${isLogin} ? 'Войти' : 'Создать'"/>
+            </form>
+            <p class="text-secondary text-center mb-3" th:utext="${isLogin} ? 'Нет аккаунта?' : 'Уже есть аккаунт?'"></p>
+            <a class="mc-login-link text-center" role="link"
+               th:href="${isLogin} ? '/registration' : '/login'">
+                <p th:utext="${isLogin} ? 'Создать аккаунт' : 'Войти'"></p>
+            </a>
+        </div>
+    </div>
+</div>
